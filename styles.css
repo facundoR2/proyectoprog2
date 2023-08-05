@@ -1,0 +1,22 @@
+body{
+    background-color: sandybrown;
+}
+.Menuinicio{
+    display:flex;
+    justify-content: space-between;
+    float: inline-start;
+    align-items: center;
+    background-color: red;
+    width: 100%;
+
+}
+.seccioncomida{
+    background-color: yellow;
+    display: inline-flex;
+    width: 40%;
+}
+.Cimagen{
+    display: flex;
+    width: 600px;
+    height: 500px;
+}
