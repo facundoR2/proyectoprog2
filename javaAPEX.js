@@ -79,7 +79,7 @@ fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
         <div class="productocomida">
         <h2>Comida: ${comida.item[comidas][""]}</h2>
         <h2>Precio: ${comida.item[precio][""]}</h2>
-        <h2>pedido: ${comida.item[pedido][""]}</h2>
+        <h2>pedido: ${comida.item[pedidos][""]}</h2>
         </div>`
 
     }
