@@ -8,23 +8,7 @@ const pedido =[
 ]
 const comida=[
     {
-        item:[
-            {
-                "comidas": "",
-                "precio": 0,
-                "pedidos": "0"
-                },
-                {
-                "comidas": "pollo",
-                "precio": 0,
-                "pedidos": "0"
-                },
-                {
-                "comidas": "papas fritas",
-                "precio": 0,
-                "pedidos": "0"
-                }
-        ],
+        item:[],
         hasmore:"",
         limit:"",
         offset:"",
@@ -74,8 +58,6 @@ function precioCalculadora(pedidohtml){
 
 // })
 //fin seccion armado
-
-const Pjson=[];
 const comidahtml= document.getElementById("box1")
 
 //seccion donde se envia la orden en formato json a apex
