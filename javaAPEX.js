@@ -74,19 +74,27 @@ const comidahtml= document.getElementById("box1")
     return respuesta.json();
  
 }).then(function(datos){
+    //se crean variables locales para poder mover los datos del array
+    //a un vector
     var items = datos.items;
+    //creamos una variable para mostrarla por consola del navegador y confirmar que esten los datos
     var mivariable = datos;
+    //se muestra la variable por la consola del navegador
     console.log(mivariable);
+    //se crea un for para mover los objetos del array a otro vector
     for (let i =0;i<items.length;i++){
         mivector.push(items[i]);
     }
+    //se crea otro for para que vaya mostrando en el div cada objeto creado
     for (let i =0;i<mivector.length;i++){
         let item = mivector[i];
+        // se crea una variable que contiene el div que se mostrara en la pagina.
         let html = `<div class="productocomida">
         <p>Comidas: ${item.comidas}</p>
         <p>Precio: ${item.precio}</p>
         <p>Pedidos: ${item.pedidos}</p>
         </div>`;
+        //modifico el div del html con la variable que contiene el div
         comidahtml.innerHTML+=html;
         
 
