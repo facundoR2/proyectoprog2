@@ -20,3 +20,9 @@ body{
     width: 600px;
     height: 500px;
 }
+.productocomida{
+    display: inline-flex;
+    width: 400px;
+    height: auto;
+    background-color: aqua;
+}
