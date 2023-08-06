@@ -8,7 +8,12 @@ const pedido =[
 ]
 const comida=[
     {
-        item:[],
+        item:[{
+            comidas:"",
+            precio:"",
+            pedidos:"",
+        }
+        ],
         hasmore:"",
         limit:"",
         offset:"",
@@ -72,9 +77,9 @@ fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
     for(comi of comida){
         comidahtml.innerHTML +=`
         <div class="productocomida">
-        <h2>Comida: ${comida.item["comida"]}</h2>
-        <h2>Precio: ${comida.item["precio"]}</h2>
-        <h2>pedido: ${comida.item["pedidos"]}</h2>
+        <h2>Comida: ${comida.item[comidas][""]}</h2>
+        <h2>Precio: ${comida.item[precio][""]}</h2>
+        <h2>pedido: ${comida.item[pedido][""]}</h2>
         </div>`
 
     }
