@@ -10,18 +10,18 @@ const comida=[
     {
         item:[
             {
-                "comidas": "hamburguesa",
-                "precio": 500,
+                "comidas": "",
+                "precio": 0,
                 "pedidos": "0"
                 },
                 {
                 "comidas": "pollo",
-                "precio": 350,
+                "precio": 0,
                 "pedidos": "0"
                 },
                 {
                 "comidas": "papas fritas",
-                "precio": 100,
+                "precio": 0,
                 "pedidos": "0"
                 }
         ],
@@ -58,21 +58,21 @@ function precioCalculadora(pedidohtml){
     
 }
 //evento que se efectua cuando el usuario clickea en "ordenar".
-pedidohtml.addEventListener("submit",(Event)=>{
-    Event.preventDefault()//<= previene que la pagina se recarge automaticamente al clickear
-pedido.push({
-    numero:1,
-    ordenado:[
-        pedidohtml.hamburguesasi.value,
-        pedidohtml.pollosi.value,
-        pedidohtml.papitassi.value
-    ]
+// pedidohtml.addEventListener("submit",(Event)=>{
+//     Event.preventDefault()//<= previene que la pagina se recarge automaticamente al clickear
+// pedido.push({
+//     numero:1,
+//     ordenado:[
+//         pedidohtml.hamburguesasi.value,
+//         pedidohtml.pollosi.value,
+//         pedidohtml.papitassi.value
+//     ]
 
-    });
-    precioCalculadora();
-    console.log(precioCalculadora())
+//     });
+//     precioCalculadora();
+//     console.log(precioCalculadora())
 
-})
+// })
 //fin seccion armado
 
 const Pjson=[];
@@ -80,35 +80,21 @@ const comidahtml= document.getElementById("box1")
 
 //seccion donde se envia la orden en formato json a apex
 fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
-// fin seccion enviado
-//seccion donde se llama hace una request a apex para que nos respoda con un objeto json.
-// fetch('https://apex.oracle.com/pls/apex/cent35prog/comidas/',{
-//     method: "POST",
-//     headers:{
-//         "Content-Type":"application/json",
-//     },body:transactionArrayJSON,
-// })
- .then(function respuesta(res){
+ .then(function(res){
     console.log(typeof res)
-    Pjson=JSON.stringify(res);
-
     return res.json();
 
 }) //funcion para ingresar el json de APEX en la pagina.
 .then(function(data){
     console.log(data)
-    for(comida of data){
+    for(comi of comida){
         comidahtml.innerHTML +=`
         <div class="productocomida">
-        <h2>Comida: ${comida.comida}</h2>
-        <h2>Precio: ${comida.precio}</h2>
-        <h2>pedido: ${comida.pedido}</h2>
+        <h2>Comida: ${comida.item[0]}</h2>
+        <h2>Precio: ${comida.item[1]}</h2>
+        <h2>pedido: ${comida.item[2]}</h2>
         </div>`
 
     }
 })
- 
-   
-
-console.log(Pjson)
 //se crea un try donde espera la respuesta de la url a la que se le hizo una solicitud

@@ -20,6 +20,12 @@ body{
     width: 600px;
     height: 500px;
 }
+.seccionordenes{
+    display: flex;
+    background-color: darkgreen;
+    width: 400px;
+    height: 300px;
+}
 .productocomida{
     display: inline-flex;
     width: 400px;
