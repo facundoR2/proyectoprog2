@@ -6,7 +6,7 @@ const pedido =[
         preciototal:"",
     }
 ]
-const comida=[
+var comida=[
     {
         item:[{
             comidas:"",
@@ -73,12 +73,12 @@ fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
 }) //funcion para ingresar el json de APEX en la pagina.
 .then(function(data){
     console.log(data)
-    for(comi of comida){
+    for(com of comida){
         comidahtml.innerHTML +=`
         <div class="productocomida">
-        <h2>Comida: ${comi.item[0]}</h2>
-        <h2>Precio: ${comi.item[1]}</h2>
-        <h2>pedido: ${comi.item[2]}</h2>
+        <h2>Comida: ${com.item[0]['comidas']}</h2>
+        <h2>Precio: ${com.item[0]['precio']}</h2>
+        <h2>pedido: ${com.item[0]['pedidos']}</h2>
         </div>`
 
     }
