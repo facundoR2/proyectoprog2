@@ -62,25 +62,59 @@ function precioCalculadora(pedidohtml){
 
 // })
 //fin seccion armado
-const comidahtml= document.getElementById("box1")
+//seccion envio del pedido a la base de datos
 
+//fin seccion envio
 //seccion donde se envia la orden en formato json a apex
-fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
- .then(function(res){
-    console.log(typeof res)
-    return res.json();
-
-}) //funcion para ingresar el json de APEX en la pagina.
-.then(function(data){
-    console.log(data)
-    for(com of comida){
-        comidahtml.innerHTML +=`
-        <div class="productocomida">
-        <h2>Comida: ${com.items[0].comidas}</h2>
-        <h2>Precio: ${com.items[0].precio}</h2>
-        <h2>pedido: ${com.items[0].pedidos}</h2>
-        </div>`
+var mivector =[]
+const comidahtml= document.getElementById("box1")
+ var promesa = fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas");
+ promesa.then(function(respuesta){
+    //hacemos que devuelva la promesa en formato json().
+    return respuesta.json();
+ 
+}).then(function(datos){
+    var items = datos.items;
+    var mivariable = datos;
+    console.log(mivariable);
+    for (let i =0;i<items.length;i++){
+        mivector.push(items[i]);
+    }
+    for (let i =0;i<mivector.length;i++){
+        let item = mivector[i];
+        let html = `<div class="productocomida">
+        <p>Comidas: ${item.comidas}</p>
+        <p>Precio: ${item.precio}</p>
+        <p>Pedidos: ${item.pedidos}</p>
+        </div>`;
+        comidahtml.innerHTML+=html;
+        
 
     }
-})
+ })
+//     .then(function(res){
+//         console.log(typeof res)
+//         return res.json();
+
+// }) //funcion para ingresar el json de APEX en la pagina.
+// .then(
+//      =
+// )
+
+// }
+// .then(
+//     function(data){
+//     // comida="";
+//     console.log(data)
+//     for(com of comida(data)){
+//         comidahtml.innerHTML +=`
+//         <div class="productocomida">
+//         <h2>Comida: ${com.items[0].comidas.value}</h2>
+//         <h2>Precio: ${com.items[0].precio.value}</h2>
+//         <h2>pedido: ${com.items[0].pedidos.value}</h2>
+//         </div>`
+
+//     }
+// }
+// )
 //se crea un try donde espera la respuesta de la url a la que se le hizo una solicitud

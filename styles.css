@@ -10,6 +10,10 @@ body{
     width: 100%;
 
 }
+#banner{
+    display: flex;
+    background-color: rebeccapurple;
+}
 .seccioncomida{
     background-color: yellow;
     display: inline-flex;
