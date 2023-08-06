@@ -72,9 +72,9 @@ fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
     for(comi of comida){
         comidahtml.innerHTML +=`
         <div class="productocomida">
-        <h2>Comida: ${comida.item[0]}</h2>
-        <h2>Precio: ${comida.item[1]}</h2>
-        <h2>pedido: ${comida.item[2]}</h2>
+        <h2>Comida: ${comida.item["comida"]}</h2>
+        <h2>Precio: ${comida.item["precio"]}</h2>
+        <h2>pedido: ${comida.item["pedidos"]}</h2>
         </div>`
 
     }
