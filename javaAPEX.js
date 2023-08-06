@@ -8,9 +8,28 @@ const pedido =[
 ]
 const comida=[
     {
-        comida:"",
-        precio:"",
-        pedido:"",
+        item:[
+            {
+                "comidas": "hamburguesa",
+                "precio": 500,
+                "pedidos": "0"
+                },
+                {
+                "comidas": "pollo",
+                "precio": 350,
+                "pedidos": "0"
+                },
+                {
+                "comidas": "papas fritas",
+                "precio": 100,
+                "pedidos": "0"
+                }
+        ],
+        hasmore:"",
+        limit:"",
+        offset:"",
+        count:"",
+        links:[]
     }
 ]
 //seccion armado de json de pedidos
@@ -58,8 +77,17 @@ pedido.push({
 
 const Pjson=[];
 const comidahtml= document.getElementById("box1")
+
+//seccion donde se envia la orden en formato json a apex
+fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/comidas")
+// fin seccion enviado
 //seccion donde se llama hace una request a apex para que nos respoda con un objeto json.
-fetch('https://apex.oracle.com/pls/apex/cent35prog/comidas/')
+// fetch('https://apex.oracle.com/pls/apex/cent35prog/comidas/',{
+//     method: "POST",
+//     headers:{
+//         "Content-Type":"application/json",
+//     },body:transactionArrayJSON,
+// })
  .then(function respuesta(res){
     console.log(typeof res)
     Pjson=JSON.stringify(res);
