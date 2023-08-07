@@ -34,7 +34,7 @@ formulariopedidos.addEventListener("submit",(Event,npedido)=>{
     try {
         function constructor(pedido,ordenado,preciototal){
             this.pedido = pedido;
-            this.ordenado = ordenado;
+            this.ordenado[0] = ordenado;
             this.preciototal = preciototal;
         }
         //se crea un constructor para utilizar dentro del listener.
