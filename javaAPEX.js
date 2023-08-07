@@ -86,7 +86,7 @@ const comidahtml= document.getElementById("box1")
     var mivariable = datos;
     //se muestra la variable por la consola del navegador
     console.log(mivariable);
-    //se crea un for para mover los objetos del array a otro vector
+    //se crea un for para mover los objetos del array a  mivector
     for (let i =0;i<items.length;i++){
         mivector.push(items[i]);
     }
