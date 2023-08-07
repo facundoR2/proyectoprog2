@@ -8,8 +8,8 @@ var pedido =[
 ]
 var npedido =Object.create(pedido);
 //seccion armado y enviado de json de pedidos
-function enviarjson(orden){
-    var enviopedidojson = JSON.stringify(orden);
+function enviarjson(objetopedido){
+    var enviopedidojson = JSON.stringify(objetopedido);
     fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/pedidos",{
         method:"POST",
         body:JSON.stringify(enviopedidojson),
@@ -21,36 +21,38 @@ function enviarjson(orden){
         return respuesta.json();
     }).then(function(data) {
         console.log("se envio ok",data);
+        console.log(JSON.parse(enviopedidojson));
     });
 
 }
 //////fin seccion//////
 
+/// seccion donde se agrega al objeto las opciones elegidas por el usuario.///
 let formulariopedidos = document.querySelector(".pedido");
 formulariopedidos.addEventListener("submit",(Event,npedido)=>{
     Event.preventDefault();
-    function constructor(pedido){
+    function constructor(pedido,ordenado,preciototal){
         this.pedido = pedido;
-        this.ordenado = pedido.ordenado;
+        this.ordenado = ordenado;
+        this.preciototal = preciototal;
     }
-    var objetopedido = new constructor(pedido);
-    var selectores = document.querySelectorAll('select');
+    //se crea un constructor para utilizar dentro del listener.
+    var objetopedido = new constructor(0,[],"");
+    var selectores = document.querySelectorAll('.pedido input[type="text"]');
     for (var i=0; i<selectores.length;i++){
         // var nlpedido = new npedido;
-        var pollo ="pollo";
-        var hamburguesa ="hamburguesa";
-        var papitas = "papitas";
-        if (selectores[i] =="hamburguesa"){
-            objetopedido.ordenado.push(hamburguesa);
+        if (selectores[i] ="hamburguesa"){
+            objetopedido.ordenado.push(selectores[i].nodeValue);
+            objetopedido.pedido.push(1);
             console.log(objetopedido.ordenado);
         }else{
             if(selectores[i]=="pollo"){
-                orden.ordenado.push(pollo);
+                orden.ordenado.push(selectores[i].value);
                 console.log(ordenado);
             }else{
                 if(selectores[i]=="papitas"){
-                    orden.ordenado.push(papitas);
-                    console.log(ordenado);
+                    orden.ordenado.push(selectores[i].value);
+                    console.log(objetopedido.ordenado[i]);
                 }
             }
         }
@@ -61,9 +63,6 @@ formulariopedidos.addEventListener("submit",(Event,npedido)=>{
 
 
 //fin seccion armado
-//seccion envio del pedido a la base de datos
-
-//fin seccion envio
 //seccion donde se envia la orden en formato json a apex
 var mivector =[]
 const comidahtml= document.getElementById("box1")
