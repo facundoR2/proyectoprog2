@@ -31,34 +31,41 @@ function enviarjson(objetopedido){
 let formulariopedidos = document.querySelector(".pedido");
 formulariopedidos.addEventListener("submit",(Event,npedido)=>{
     Event.preventDefault();
-    function constructor(pedido,ordenado,preciototal){
-        this.pedido = pedido;
-        this.ordenado = ordenado;
-        this.preciototal = preciototal;
-    }
-    //se crea un constructor para utilizar dentro del listener.
-    var objetopedido = new constructor(0,[],"");
-    var selectores = document.querySelectorAll('.pedido input[type="text"]');
-    for (var i=0; i<selectores.length;i++){
-        // var nlpedido = new npedido;
-        if (selectores[i] ="hamburguesa"){
-            objetopedido.ordenado.push(selectores[i].nodeValue);
-            objetopedido.pedido.push(1);
-            console.log(objetopedido.ordenado);
-        }else{
-            if(selectores[i]=="pollo"){
-                orden.ordenado.push(selectores[i].value);
-                console.log(ordenado);
+    try {
+        function constructor(pedido,ordenado,preciototal){
+            this.pedido = pedido;
+            this.ordenado = ordenado;
+            this.preciototal = preciototal;
+        }
+        //se crea un constructor para utilizar dentro del listener.
+        var objetopedido = new constructor(0,[],"");
+        var selectores = document.querySelectorAll('.pedido input[type="text"]');
+        for (var i=0; i<selectores.length;i++){
+            // var nlpedido = new npedido;
+            if (selectores[i] ="hamburguesa"){
+                objetopedido.ordenado.push(selectores[i].nodeValue);
+                objetopedido.pedido.push(1);
+                console.log(objetopedido.ordenado);
             }else{
-                if(selectores[i]=="papitas"){
+                if(selectores[i]=="pollo"){
                     orden.ordenado.push(selectores[i].value);
-                    console.log(objetopedido.ordenado[i]);
+                    console.log(ordenado);
+                }else{
+                    if(selectores[i]=="papitas"){
+                        orden.ordenado.push(selectores[i].value);
+                        console.log(objetopedido.ordenado[i]);
+                    }
                 }
             }
+            // console.log(pedido.ordenado)
         }
-        // console.log(pedido.ordenado)
+        enviarjson(objetopedido);
+        
+    } catch (error) {
+        console.error(error);
+        
     }
-    enviarjson(objetopedido);
+    
 });
 
 
