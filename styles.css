@@ -21,7 +21,7 @@ body{
 }
 .Cimagen{
     display: flex;
-    width: 600px;
+    width: 500px;
     height: 500px;
 }
 .seccionordenes{
@@ -35,4 +35,7 @@ body{
     width: 400px;
     height: auto;
     background-color: aqua;
+}
+.productocomida p{
+    justify-content: space-between;
 }
