@@ -1,66 +1,65 @@
 // se crean los objetos a utulizar
-const pedido =[
+var pedido =[
     {
         numero:0,
         ordenado:[],
         preciototal:"",
     }
 ]
-var comida=[
-    {
-        items:[{
-            comidas:"",
-            precio:"",
-            pedidos:"",
-        }],
-        hasmore:"",
-        limit:"",
-        offset:"",
-        count:"",
-        links:[]
-    }
-]
-//seccion armado de json de pedidos
-function confirmaciones(pedidohtml){
-    if (document.getElementById("#hamburguesasi")=true){
-        pedido.ordenado=["hamburguesa"];
-    }else{}
-    if (pedidohtml.pollosi.value =true){
-        pedido.ordenado+=""
-    }
-}
-const pedidohtml = document.querySelector(".pedido");
-//funcion para el precio total
-function precioCalculadora(pedidohtml){
-    valorhamburgesa = 550;
-    valorpollo =300;
-    valorpapasfritas=200;
-    preciototal =0;
-    var hambrg = document.getElementById("hamburguesasi").value;
-    var pollo = document.getElementById("pollosi").value;
-    var papas= document.getElementById("papitassi"),value;
-    if(hambrg=true){preciototal=preciototal+valorhamburgesa}
-    if(pollo=true){preciototal=preciototal+valorpollo}
-    if(papas=true){preciototal=preciototal+valorpapasfritas}
-    return preciototal;
-    
-}
-//evento que se efectua cuando el usuario clickea en "ordenar".
-// pedidohtml.addEventListener("submit",(Event)=>{
-//     Event.preventDefault()//<= previene que la pagina se recarge automaticamente al clickear
-// pedido.push({
-//     numero:1,
-//     ordenado:[
-//         pedidohtml.hamburguesasi.value,
-//         pedidohtml.pollosi.value,
-//         pedidohtml.papitassi.value
-//     ]
+var npedido =Object.create(pedido);
+//seccion armado y enviado de json de pedidos
+function enviarjson(orden){
+    var enviopedidojson = JSON.stringify(orden);
+    fetch("https://apex.oracle.com/pls/apex/cent35prog/comidasrapidas/pedidos",{
+        method:"POST",
+        body:JSON.stringify(enviopedidojson),
+        headers:{
+            "Content-Type":"application/json",
+        }
+        
+    }).then(function(respuesta){
+        return respuesta.json();
+    }).then(function(data) {
+        console.log("se envio ok",data);
+    });
 
-//     });
-//     precioCalculadora();
-//     console.log(precioCalculadora())
+}
+//////fin seccion//////
 
-// })
+let formulariopedidos = document.querySelector(".pedido");
+formulariopedidos.addEventListener("submit",(Event,npedido)=>{
+    Event.preventDefault();
+    function constructor(pedido){
+        this.pedido = pedido;
+        this.ordenado = pedido.ordenado;
+    }
+    var objetopedido = new constructor(pedido);
+    var selectores = document.querySelectorAll('select');
+    for (var i=0; i<selectores.length;i++){
+        // var nlpedido = new npedido;
+        var pollo ="pollo";
+        var hamburguesa ="hamburguesa";
+        var papitas = "papitas";
+        if (selectores[i] =="hamburguesa"){
+            objetopedido.ordenado.push(hamburguesa);
+            console.log(objetopedido.ordenado);
+        }else{
+            if(selectores[i]=="pollo"){
+                orden.ordenado.push(pollo);
+                console.log(ordenado);
+            }else{
+                if(selectores[i]=="papitas"){
+                    orden.ordenado.push(papitas);
+                    console.log(ordenado);
+                }
+            }
+        }
+        // console.log(pedido.ordenado)
+    }
+    enviarjson(objetopedido);
+});
+
+
 //fin seccion armado
 //seccion envio del pedido a la base de datos
 
