@@ -92,6 +92,14 @@ body{
 .productocomida p{
     justify-content: space-between;
 }
+#seccionvalores{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    background-color: rgb(254, 212, 0);
+}
 #piedepagina{
     display: flex;
     border-bottom-left-radius: 15%;
