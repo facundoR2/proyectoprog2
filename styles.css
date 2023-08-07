@@ -1,41 +1,103 @@
-body{
-    background-color: sandybrown;
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,700;1,400&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'lora';
+    font-size: 20px;
 }
-.Menuinicio{
-    display:flex;
+.header{
+    display: flex;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    background-color:rgb(236, 184, 53) ;
     justify-content: space-between;
-    float: inline-start;
     align-items: center;
-    background-color: red;
-    width: 100%;
+    height: 80px;
+    padding: 5px 5%;
+}
+.header .logo{
+    cursor: pointer;
+}
+.header .logo img{
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+.header .logo img:hover{
+    transform: scale(1.2);
 
+}
+.header .nav-links{
+    list-style: none;
+}
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+
+}
+.header .nav-links a{
+    font-size: 700;
+    color: yellow;
+    text-decoration: none;
+}
+.header .nav-links li a:hover{
+    color: red;
+}
+body{
+    margin: auto;
+    background-color: rgb(203, 126, 59);
+    width: 960px;
+
+}
+#comidas img{
+    height: 200px;
+    width: 400px;
 }
 #banner{
     display: flex;
+    margin: auto;
+    width: 80%;
     background-color: rebeccapurple;
+
+    align-items: center;
+    justify-content: center;
 }
 .seccioncomida{
+    margin-left: 300px;
     background-color: yellow;
     display: inline-flex;
-    width: 40%;
+    width: 400px;
 }
 .Cimagen{
     display: flex;
     width: 500px;
     height: 500px;
 }
-.seccionordenes{
+#seccionordenes{
     display: flex;
+    margin: auto;
     background-color: darkgreen;
-    width: 400px;
-    height: 300px;
+    width: 500px;
+    height: 200px;
 }
 .productocomida{
-    display: inline-flex;
+    display:flex;
     width: 400px;
+    align-items: center;
+    justify-content: center;
     height: auto;
-    background-color: aqua;
+    background-color: rgb(255, 0, 0);
 }
 .productocomida p{
     justify-content: space-between;
+}
+#piedepagina{
+    display: flex;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(236, 184, 53);
+    padding: 5px 5%;
 }

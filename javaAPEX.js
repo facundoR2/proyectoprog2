@@ -1,4 +1,4 @@
-// se crean los objetos a utulizar
+// se crean los objetos a utilizar
 var pedido =[
     {
         numero:0,
